@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .radio-group {
+            margin-bottom: 20px;
+        }
+        .radio-group label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Quiz Login</h2>
+        <form action="#" method="POST" id="login-form">
+            <div class="radio-group">
+                <input type="radio" id="instructor" name="user_type" value="instructor" checked>
+                <label for="instructor">Instructor</label>
+                <input type="radio" id="student" name="user_type" value="student">
+                <label for="student">Student</label>
+            </div>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var userType = document.querySelector('input[name="user_type"]:checked').value;
+            var username = document.querySelector('input[name="username"]').value;
+            var password = document.querySelector('input[name="password"]').value;
+
+            // Perform AJAX request to validate credentials and redirect to appropriate page
+            // Here, you can implement backend logic to validate the credentials securely
+
+            if (userType === "instructor") {
+                // Redirect to instructor page
+                window.location.href = "instructor.html"; // Replace "instructor.php" with your instructor page URL
+            } else {
+                // Redirect to student page
+                window.location.href = "student.html"; // Replace "student.php" with your student page URL
+            }
+        });
+    </script>
+</body>
+</html>

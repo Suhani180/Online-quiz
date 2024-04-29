@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 50px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            margin-right: 10px;
+        }
+        select {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome, Student!</h2>
+    <p>You can select a subject and start the quiz here.</p>
+    <form id="startQuizForm">
+        <label for="subject">Select Subject:</label>
+        <select name="subject" id="subject">
+            <option value="physics">Physics</option>
+            <option value="chemistry">Chemistry</option>
+            <option value="mathematics">Mathematics</option>
+        </select>
+        <input type="submit" value="Start Quiz">
+    </form>
+
+    <script>
+        document.getElementById("startQuizForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var subject = document.getElementById("subject").value;
+            var quizPage;
+            switch (subject) {
+                case "physics":
+                    quizPage = "physics_quiz.html";
+                    break;
+                case "chemistry":
+                    quizPage = "chemistry_quiz.html";
+                    break;
+                case "mathematics":
+                    quizPage = "mathematics_quiz.html";
+                    break;
+                default:
+                    quizPage = "error.html"; // Redirect to an error page if subject is not recognized
+            }
+            window.location.href = quizPage;
+        });
+    </script>
+</body>
+</html>

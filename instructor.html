@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 50px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            margin-right: 10px;
+        }
+        select {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome, Instructor!</h2>
+    <p>You can view topics, manage quizzes, and change questions here.</p>
+    <form id="changeQuestionForm" action="#">
+        <label for="subject">Select Subject:</label>
+        <select name="subject" id="subject">
+            <option value="physics">Physics</option>
+            <option value="chemistry">Chemistry</option>
+            <option value="mathematics">Mathematics</option>
+        </select>
+        <input type="submit" value="Change Question">
+    </form>
+
+    <script>
+        document.getElementById("changeQuestionForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var subject = document.getElementById("subject").value;
+            // Redirect to the respective page for changing questions based on the selected subject
+            if (subject === "physics") {
+                window.location.href = "change_physics_question.html";
+            } else if (subject === "chemistry") {
+                window.location.href = "change_chemistry_question.html";
+            } else if (subject === "mathematics") {
+                window.location.href = "change_math_question.html";
+            }
+        });
+    </script>
+</body>
+</html>
+

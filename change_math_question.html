@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Math Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 50px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], textarea {
+            width: 80%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Change Mathematics Questions</h2>
+    <form id="changeQuestionForm">
+        <label for="question">Question:</label>
+        <textarea name="question" id="question" rows="4" required></textarea>
+        <label for="optionA">Option A:</label>
+        <input type="text" id="optionA" name="optionA" required>
+        <label for="optionB">Option B:</label>
+        <input type="text" id="optionB" name="optionB" required>
+        <label for="optionC">Option C:</label>
+        <input type="text" id="optionC" name="optionC" required>
+        <label for="optionD">Option D:</label>
+        <input type="text" id="optionD" name="optionD" required>
+        <label for="correctOption">Correct Option:</label>
+        <select name="correctOption" id="correctOption" required>
+            <option value="a">A</option>
+            <option value="b">B</option>
+            <option value="c">C</option>
+            <option value="d">D</option>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.getElementById("changeQuestionForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var question = document.getElementById("question").value;
+            var optionA = document.getElementById("optionA").value;
+            var optionB = document.getElementById("optionB").value;
+            var optionC = document.getElementById("optionC").value;
+            var optionD = document.getElementById("optionD").value;
+            var correctOption = document.getElementById("correctOption").value;
+
+            // Here, you can perform further actions like sending the data to the server
+            // for updating the question in the database
+            
+            // For demonstration, log the values to the console
+            console.log("Question:", question);
+            console.log("Option A:", optionA);
+            console.log("Option B:", optionB);
+            console.log("Option C:", optionC);
+            console.log("Option D:", optionD);
+            console.log("Correct Option:", correctOption);
+
+            // You can also add AJAX request to send data to the server
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            text-align: left;
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #score {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Physics Quiz</h2>
+        <form id="quizForm">
+            <div class="question">
+                <h3>Question 1: What is the SI unit of force?</h3>
+                <input type="radio" name="q1" value="a"> a- Newton<br>
+                <input type="radio" name="q1" value="b"> b- Watt<br>
+                <input type="radio" name="q1" value="c"> c- Joule<br>
+                <input type="radio" name="q1" value="d"> d- Pascal<br>
+            </div>
+            <div class="question">
+                <h3>Question 2: What is the SI unit of energy?</h3>
+                <input type="radio" name="q2" value="a"> a- Newton<br>
+                <input type="radio" name="q2" value="b"> b- Watt<br>
+                <input type="radio" name="q2" value="c"> c- Joule<br>
+                <input type="radio" name="q2" value="d"> d- Pascal<br>
+            </div>
+            <div class="question">
+                <h3>Question 3: What is the speed of light in vacuum?</h3>
+                <input type="radio" name="q3" value="a"> a- 299,792,458 m/s<br>
+                <input type="radio" name="q3" value="b"> b- 300,000,000 m/s<br>
+                <input type="radio" name="q3" value="c"> c- 3,000,000 m/s<br>
+                <input type="radio" name="q3" value="d"> d- 299,000,000 m/s<br>
+            </div>
+            <div class="question">
+                <h3>Question 4: What is the formula for Ohm's law?</h3>
+                <input type="radio" name="q4" value="a"> a- V = IR<br>
+                <input type="radio" name="q4" value="b"> b- V = I/R<br>
+                <input type="radio" name="q4" value="c"> c- V = R/I<br>
+                <input type="radio" name="q4" value="d"> d- V = I+R<br>
+            </div>
+            <div class="question">
+                <h3>Question 5: What is the formula for calculating work?</h3>
+                <input type="radio" name="q5" value="a"> a- W = Fd<br>
+                <input type="radio" name="q5" value="b"> b- W = F/d<br>
+                <input type="radio" name="q5" value="c"> c- W = F+d<br>
+                <input type="radio" name="q5" value="d"> d- W = F-d<br>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+        <div id="score"></div>
+    </div>
+
+    <script>
+        document.getElementById("quizForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            // Calculate the score
+            var score = 0;
+            var answers = {
+                q1: "a",
+                q2: "c",
+                q3: "a",
+                q4: "a",
+                q5: "a"
+            };
+
+            for (var i = 1; i <= Object.keys(answers).length; i++) {
+                var questionName = "q" + i;
+                var selectedAnswer = document.querySelector('input[name="' + questionName + '"]:checked');
+                if (selectedAnswer) {
+                    if (selectedAnswer.value === answers[questionName]) {
+                        score++;
+                    }
+                }
+            }
+
+            // Display the score
+            var scoreDisplay = document.getElementById("score");
+            scoreDisplay.innerHTML = "Your score: " + score + " out of 5";
+
+            // Redirect to feedback page
+            setTimeout(function() {
+                window.location.href = "feedback.html";
+            }, 3000); // Redirect after 3 seconds
+        });
+    </script>
+</body>
+</html>

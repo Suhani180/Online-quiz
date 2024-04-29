@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        form {
+            text-align: left;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .score {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Mathematics Quiz</h2>
+        <form id="quizForm">
+            <div class="question">
+                <h3>Question 1: What is the result of 2 + 2?</h3>
+                <input type="radio" name="q1" value="a"> a) 3<br>
+                <input type="radio" name="q1" value="b"> b) 4<br>
+                <input type="radio" name="q1" value="c"> c) 5<br>
+                <input type="radio" name="q1" value="d"> d) 6<br>
+            </div>
+            <div class="question">
+                <h3>Question 2: What is the result of 5 * 4?</h3>
+                <input type="radio" name="q2" value="a"> a) 16<br>
+                <input type="radio" name="q2" value="b"> b) 18<br>
+                <input type="radio" name="q2" value="c"> c) 20<br>
+                <input type="radio" name="q2" value="d"> d) 22<br>
+            </div>
+            <div class="question">
+                <h3>Question 3: What is the result of 10 / 2?</h3>
+                <input type="radio" name="q3" value="a"> a) 2<br>
+                <input type="radio" name="q3" value="b"> b) 4<br>
+                <input type="radio" name="q3" value="c"> c) 5<br>
+                <input type="radio" name="q3" value="d"> d) 6<br>
+            </div>
+            <div class="question">
+                <h3>Question 4: What is the result of 3 squared?</h3>
+                <input type="radio" name="q4" value="a"> a) 6<br>
+                <input type="radio" name="q4" value="b"> b) 9<br>
+                <input type="radio" name="q4" value="c"> c) 12<br>
+                <input type="radio" name="q4" value="d"> d) 15<br>
+            </div>
+            <div class="question">
+                <h3>Question 5: What is the result of 25 - 7?</h3>
+                <input type="radio" name="q5" value="a"> a) 15<br>
+                <input type="radio" name="q5" value="b"> b) 17<br>
+                <input type="radio" name="q5" value="c"> c) 18<br>
+                <input type="radio" name="q5" value="d"> d) 19<br>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+        <div class="score" id="score" style="display: none;">
+            <h3>Your Total Score: <span id="totalScore"></span></h3>
+            <p><a href="feedback.html">Give Feedback</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("quizForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var totalScore = calculateScore();
+            document.getElementById("totalScore").innerText = totalScore;
+            document.getElementById("score").style.display = "block";
+        });
+
+        function calculateScore() {
+            var score = 0;
+            var answers = {
+                "q1": "b",
+                "q2": "c",
+                "q3": "c",
+                "q4": "b",
+                "q5": "c"
+            };
+
+            for (var i = 1; i <= 5; i++) {
+                var questionName = "q" + i;
+                var selectedOption = document.querySelector('input[name="' + questionName + '"]:checked');
+                if (selectedOption && selectedOption.value === answers[questionName]) {
+                    score++;
+                }
+            }
+
+            return score;
+        }
+    </script>
+</body>
+</html>
